@@ -1,0 +1,448 @@
+body {
+  /* font-family: "Poppins", sans-serif; */
+  margin: 0;
+
+  overflow-x: hidden;
+  /* font-family: 'Poppins', sans-serif; */
+  font-family: league-gothic, sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  text-decoration: none;
+}
+.header {
+  position: fixed;
+  height: 12vh;
+  width: 100vw;
+  z-index: 1000;
+
+  display: flex;
+  justify-content: space-evenly;
+  /* background-image: linear-gradient(90deg,#0162c8,#55e7fc)   ; */
+  background-color: black;
+
+  /* background-image: linear-gradient(to right, #0ab9cf  , yellow); */
+  /* background-color: #0ab9cf; */
+}
+
+.container {
+  width: 95%;
+  height: 100%;
+  display: flex;
+}
+.container .logo {
+  width: 31%;
+  height: 100%;
+}
+.container .logo img {
+  position: relative;
+  left: 18%;
+  height: 100%;
+}
+.header .class_menu {
+  height: 100%;
+  width: 79%;
+  display: flex;
+  align-items: center;
+  /* justify-content: flex-end; */
+}
+
+.header .class_menu .menu {
+  display: flex;
+  justify-content: space-between;
+  width: 48%;
+  list-style: none;
+  text-decoration: none;
+  /* width: 70%;
+       height: 100%;  */
+}
+.header .class_menu .menu span {
+  color: white;
+}
+
+ul li a {
+  text-decoration: none;
+  color: white;
+  transition: all 0.5s ease;
+}
+ul li a:hover {
+  color: #3778e7;
+}
+#id_btn1 {
+  padding: 12px 36px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  color: #fff;
+  margin: 10px 0;
+  /* background-image: linear-gradient(90deg,#0162c8,#55e7fc)   ; */
+  background-color: none;
+  border: 2px solid #3778e7;
+  transition: all 0.6s ease;
+}
+ul li #id_btn {
+  padding: 12px 36px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  color: #fff;
+  margin: 10px 0;
+  /* background-image: linear-gradient(90deg,#0162c8,#55e7fc)   ; */
+  background-color: #3778e7;
+  transition: all 0.6s ease;
+}
+ul li #id_btn:hover {
+  padding: 12px 36px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  color: #fff;
+  margin: 10px 0;
+  /* background-image: linear-gradient(90deg,#0162c8,#55e7fc)   ; */
+  background-color: blue;
+}
+
+.home {
+  width: 100vw;
+  height: 100vh;
+  background-image: url("../assets/Fundo\ home.gif");
+  /* background-image: url("../img_novo/Fundo\ home.gif"); */
+  background-size: cover;
+  display: flex;
+  justify-content: space-evenly;
+}
+a {
+  text-decoration: none;
+}
+.home .container {
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  /* align-items: center; */
+}
+.home .container .frase {
+  width: 80%;
+
+  text-decoration: none;
+  color: white;
+  list-style: none;
+
+  text-align: center;
+  font-size: 12.5px;
+
+  margin-top: 26%;
+}
+#id_frase {
+  font-size: 50px;
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+.subTitulo {
+  text-shadow: black 0.1em 0.1em 0.2em;
+}
+
+.Charity_Area {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  padding: 0;
+  justify-content: space-evenly;
+  /* background-image: url("https://cdn.discordapp.com/attachments/734549079908155444/904404620942643250/fundo_charity_3.png"); */
+  /*   background-image: url("https://cdn.discordapp.com/attachments/734549079908155444/904773514953887754/Design_sem_nome_3.png"); */
+  /* background-image: url("../assets/fundo_1.gif"); */
+  background-image: url("../assets/fundo_carrosel.gif");
+  /* background-color: black; */
+}
+.Charity_Area .container {
+  width: 52%;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 7%;
+  justify-content: right;
+  /* background-color: blue; */
+}
+
+.filantropia {
+  height: 100vh;
+  width: 100vw;
+}
+
+.Charity_Area .container .h1_charity {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: -1.5%;
+  /* background-color: blue; */
+}
+.Charity_Area .container .h1_charity h1 {
+  padding: 20px 10px;
+  border-radius: 10px;
+  /* background-color: blue; */
+}
+.Charity_Area .container .img_rotate {
+  margin-top: 10%;
+  width: 100%;
+  transform: translateX(300%);
+  display: flex;
+  justify-content: space-evenly;
+  transition: all 0.8s ease;
+  margin-top: 20%;
+}
+.Charity_Area .container .img_rotate img {
+  object-fit: cover;
+  width: 100%;
+}
+.Charity_Area .container .selector {
+  display: flex;
+  height: 20px;
+  position: relative;
+  top: -5%;
+  /*top:-12%*/
+  justify-content: center;
+}
+
+.Charity_Area .texto_motivacional {
+  width: 30%;
+  height: 30%;
+  position: relative;
+  display: table;
+  left: 28%;
+  top: 30%;
+  font-family: sans-serif;
+  text-align: center;
+  border-top: 2px solid white;
+  border-bottom: 2px solid white;
+}
+.Charity_Area .texto_motivacional .texto_1 {
+  margin-top: 14%;
+  font-size: 23px;
+  color: white;
+}
+.Charity_Area .texto_motivacional .texto_2 {
+  color: white;
+  margin-top: 10%;
+  text-align: right;
+}
+
+.filantropia {
+  height: 165vh;
+  width: 100vw;
+  display: flex;
+  justify-content: space-evenly;
+  /* background-color: #234480; */
+  background-color: #0074ff;
+}
+.filantropia .container {
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+}
+.filantropia .container .on_top {
+  height: 34%;
+  width: 100%;
+  /* background-color: #fff; */
+  display: flex;
+  margin-top: 2%;
+}
+.filantropia .container .on_top .on_top_left {
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+}
+.filantropia .container .on_top .on_top_right {
+  height: 100%;
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.filantropia .container .on_top .on_top_right img {
+  width: 108%;
+  position: relative;
+  left: 13%;
+}
+
+.filantropia .container .on_top .on_top_left .titulo {
+  margin-top: 10%;
+  width: 100%;
+  color: #38e89c;
+  font-weight: 700;
+  font-family: "Hind", sans-serif;
+}
+.filantropia .container .on_top .on_top_left .text {
+  font-family: Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  letter-spacing: 0.13em;
+  color: #fff;
+}
+.filantropia .container .on_top .on_top_left .titulo2 {
+  margin-top: 10%;
+  width: 100%;
+  color: #38e89c;
+  font-weight: 700;
+  font-family: "Hind", sans-serif;
+}
+.filantropia .container .on_bottom {
+  height: 55%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.filantropia .container .on_bottom .box {
+  height: 100%;
+  width: 20%;
+}
+.filantropia .container .on_bottom .box:hover {
+  height: 100%;
+  width: 20%;
+
+  transform: scale(1.1, 1.1);
+
+  transition: all 0.2s ease-in-out;
+}
+.filantropia .container .on_bottom .box .img {
+  height: 40%;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.filantropia .container .on_bottom .box .img img {
+  height: 100%;
+}
+.filantropia .container .on_bottom .box .titulo {
+  width: 100%;
+  /* font-family: Arial; */
+  font-size: 11px;
+  font-weight: 100;
+  font-family: "Hind", sans-serif;
+  color: #38e89c;
+  border-bottom: 2px solid #38e89c;
+}
+.filantropia .container .on_bottom .box .text {
+  margin-top: 10%;
+  width: 100%;
+  color: white;
+  font-weight: 100;
+  font-family: "Hind", sans-serif;
+  font-size: 13px;
+}
+
+#id_titulo_box_1 h1 {
+  height: 71px;
+}
+
+.instituicoes {
+  width: 100vw;
+  height: 100vh;
+  background-color: #0092ff;
+  display: flex;
+  justify-content: space-evenly;
+}
+.instituicoes .container {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  
+}
+.instituicoes .container .titulo{
+  width: 100%;
+  margin-top: 5%;
+}
+.instituicoes .container .titulo h1{
+font-family: Arial;
+font-size: 30px;
+font-style: normal;
+font-weight: bold;
+line-height: 14px;
+letter-spacing: 0.13em;
+text-align: left;
+color:#fff;
+
+}
+.instituicoes .container .img_top {
+  width: 100%;
+  height: 100%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: space-between;
+}
+.instituicoes .container .img_top .box {
+  width: 19%;
+  height: 45%;
+  transition: all 0.5 ease-in-out;
+}
+.instituicoes .container .img_top .box:hover {
+  width: 19%;
+  height: 45%;
+  transform: scale(1.1,1.1);
+  
+}
+.instituicoes .container .img_top .box img{
+  width: 100%;
+ 
+}
+
+
+.sobre {
+  width: 100vw;
+  height: 100vh;
+  background-color: #388659;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sobre .container {
+  width: 30%;
+  height: 75%;
+  background-color: #ecf0f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 20px;
+}
+.sobre .container .titulo {
+  width: 100%;
+  /* margin-bottom: 20%; */
+  text-align: center;
+}
+.sobre .container .titulo h1 {
+  font-family: Roboto;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 38px;
+  letter-spacing: 0.13em;
+  text-align: center;
+}
+.sobre .container .imagem {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 20%;
+  margin-bottom: 5%;
+}
+.sobre .container .imagem img {
+  height: 100%;
+  width: 25%;
+  border-radius: 50%;
+}
+.sobre .container .texto {
+  width: 95%;
+  font-family: Roboto;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 26px;
+  letter-spacing: 0.13em;
+  text-align: left;
+  position: relative;
+  left: 3%;
+  top: -2%;
+}

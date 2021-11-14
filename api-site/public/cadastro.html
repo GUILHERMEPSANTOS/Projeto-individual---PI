@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>AcquaTec | Cadastro</title>
+
+    <script src="./js/funcoes.js"></script>
+
+    <link rel="icon" href="./assets/icon/favicon.ico" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <!--header inicio-->
+    <div class="header">
+      <div class="container">
+        <div class="logo">
+          <img
+            src="https://media.discordapp.net/attachments/734549079908155444/904128861845983253/Blaize_Baller_3.gif?width=473&height=473"
+            alt=""
+          />
+        </div>
+        <div class="class_menu">
+          <ul class="menu">
+            <li><a href="index.html">Home</a></li>
+            <!-- <li><a href="#id_charity_area">Charity Area</a></li> -->
+            <!-- <li><a href="#">Sobre</a></li> -->
+
+            <!-- <span>|</span> -->
+            <!-- <li><a href="./login.html">Login</a></li> -->
+            <!-- <li><a id="id_btn" href="">Cadastrar-se</a></li> -->
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--header fim-->
+
+    <!-- <div class="banner-login ">
+        <div class="container ">
+            <div style="height: 550px;" class="card medio">
+                <h2>Bem-vindo!</h2>
+                <div class="formulario">
+                    <div class="div_form">
+                        Nome:
+                        <input id="nome_input" type="text" placeholder="Ada Lovelace">
+                        <br>
+                        E-mail:
+                        <input id="email_input" type="text" placeholder="meuemail@provedor.com">
+                        <br>
+                        Senha:
+                        <input id="senha_input" type="password" placeholder="******">
+                        <br>
+                        Confirmação da Senha:
+                        <input id="confirmacao_senha_input" type="password" placeholder="******">
+                        <br>
+                        Telefone:
+                        <input id="telefone_input" type="password" placeholder="******">
+                        <br>
+                        <button class="btn" onclick="cadastrar()">Cadastrar</button>
+                    </div>
+                </div>
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                </div>
+
+                <div id="div_erros_login">
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="cadastro">
+      <div class="container">
+        <div class="left_side_c">
+            <span><a href="./login.html">
+               Login
+            </a></span>
+        </div>
+
+        <div class="right_side_c">
+           
+          <div class="div_form_c">
+            <div class="titulo">
+                Cadastrar
+            </div>
+               
+                <label for="name_nome"> Nome:</label>
+                <input name="name_nome" id="nome_input" type="text" placeholder="Ada Lovelace">
+
+                <label for="name_Email"> E-mail:</label>             
+                <input name="name_Email" id="email_input" type="text" placeholder="meuemail@provedor.com">
+
+                <label for="name_Senha">Senha:</label>
+                <input name="name_Senha" id="senha_input" type="password" placeholder="******">
+              
+                <label id="label_conf" for="name_confirmacao_senha">Confirmação da Senha:</label>
+                <input name="name_confirmacao_senha" id="confirmacao_senha_input" type="password" placeholder="******">
+               
+               <label id="label_conf" for="name_preferencia:">Área de Preferencia:</label>
+               <select name="name_preferencia" id="preferencia">
+                  <option value="-">-</option>
+                  <option value="Doação de sangue">Doação de sangue</option>
+                  <option value="Adoação de animais">Adoação de animais</option>
+                  <option value="Visita de orfanatos">Visita a orfanatos</option>
+                  <option value="Doação de cabelo">Doação de cabelo</option>
+                  <option value="Mínimas atitudes">Mínimas atitudes</option>
+               </select>
+               
+                <button class="btn" onclick="cadastrar()">Cadastrar</button>
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <!--footer inicio-->
+    <!-- <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por um aluno BandTec &copy; 2021</h4>
+        </div>
+    </div> -->
+    <!--footer fim-->
+  </body>
+</html>
+
+<script>
+  function cadastrar() {
+    // aguardar();
+    alert("entrei")
+    var nomeVar = nome_input.value;
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
+    var confirmacaoSenhaVar = confirmacao_senha_input.value;
+    var preferenciaVar = preferencia.value;
+    console.log(preferenciaVar);
+
+    fetch("/usuarios/cadastrar", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        nome: nomeVar,
+        email: emailVar,
+        senha: senhaVar,
+        preferencia: preferenciaVar
+      }),
+    })
+      .then(function (resposta) {
+        console.log("resposta: ", resposta);
+        alert("entrei 2")
+        if (resposta.ok) {
+          window.alert("Cadastro realizado com sucesso!");
+          window.location = "login.html";
+        //   finalizarAguardar();
+        } else {
+          throw "Houve um erro ao tentar realizar o cadastro!";
+        }
+      })
+      .catch(function (resposta) {
+        console.log(`#ERRO: ${resposta}`);
+        // finalizarAguardar();
+      });
+  }
+</script>

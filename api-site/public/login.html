@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AcquaTec | Login</title>
+
+    <script src="./js/funcoes.js"></script>
+
+    <link rel="icon" href="./assets/icon/favicon.ico">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+
+    <div class="header">
+
+        <div class="container">
+             <div class="logo">
+                 <img src="https://media.discordapp.net/attachments/734549079908155444/904128861845983253/Blaize_Baller_3.gif?width=473&height=473" alt="">
+             </div>
+             <div class="class_menu">
+                    <ul class="menu">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#id_charity_area">Charity Area</a></li>
+                    <li><a href="#">Sobre</a></li>
+                    
+                    <span>|</span>
+                    <li><a  href="./login.html">Login</a></li>
+                     <li><a id="id_btn" href="./cadastro.html">Cadastrar-se</a></li>  
+                   
+                    
+                  </ul> 
+             </div>
+
+
+
+        </div>
+    </div>
+    <!-- acima meu header -->
+
+
+    <!-- <div class="banner-login">
+        <div class="container">
+            <div class="card medio">
+                <h2>Olá de volta!</h2>
+
+                <div class="formulario">
+                    <div class="div_form">
+                        E-mail:
+                        <input id="email_input" type="text" placeholder="Login">
+                        <br>
+                        Senha:
+                        <input id="senha_input" type="password" placeholder="******">
+                        <br>
+                        <button class="btn" onclick="entrar()">
+                            Entrar
+                        </button>
+                    </div>
+
+
+                </div>
+
+                <div id="div_aguardar" class="loading-div">
+                    <img src="./assets/circle-loading.gif" id="loading-gif">
+                </div>
+
+                <div id="div_erros_login">
+
+                </div>
+            </div>
+        </div>
+    </div> -->
+
+
+    <div class="login">
+            <div class="container">
+                <div class="left_side">
+        
+                
+                        <div class="div_form">
+                            <label for="email_name">E-mail:</label>
+                            
+                            <input name="email_name" id="email_input" type="text" placeholder="  Login">
+                            <br>
+                            <label for="name_senha"> Senha:</label>
+                           
+                            <input name="name_senha" id="senha_input" type="password" placeholder="  ******">
+                            <br>
+                            <button  onclick="entrar()">
+                                <span> Entrar</span>
+                            </button>
+                        
+                        </div>
+                    
+                </div>  
+
+                        <div class="right_side">
+                            <span><a href="./cadastro.html">
+                                Cadastrar
+                            </a>
+                            </span>
+                        </div>
+        </div>
+    </div>
+    <!--footer inicio-->
+    <div class="footer">
+        <div class="container">
+            <h4>Feito com amor por um aluno BandTec &copy; 2021</h4>
+        </div>
+    </div>
+    
+
+    <!-- modal?
+
+    <div id="div_modal" class="div-modal">
+        <div id="modal_backdrop" onclick="fecharModal()" class="modal-backdrop">
+        </div>
+        <div id="modal_container" class="modal-container">
+            <button onclick="fecharModal()">fechar modal</button>
+        </div>
+    </div> -->
+
+
+
+</body>
+
+</html>
+
+<script>
+
+    function limparFormulario() {
+        document.getElementById("form_login").reset();
+    }
+
+    function entrar() {
+        // aguardar();
+
+        var emailVar = email_input.value;
+        var senhaVar = senha_input.value;
+
+        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+        if (emailVar == "" || senhaVar == "") {
+            window.alert("Preencha todos os campos para prosseguir!");
+            // finalizarAguardar();
+            return false;
+        }
+
+        if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+            window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+            // finalizarAguardar();
+        }
+
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email: emailVar,
+                senha: senhaVar,
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
+            
+            if (resposta.ok) {
+                console.log(resposta);
+                alert("conta encontrada")
+                
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
+
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.id;
+
+                    setTimeout(function () {
+                        window.location = "./dashboard/cards.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+                alert("Usuario ou senha invalido, tente novamente")
+                console.log("Houve um erro ao tentar realizar o login!");
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                   //finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+            
+        })
+
+        return false;
+    }
+
+</script>
