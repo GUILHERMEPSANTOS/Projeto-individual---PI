@@ -1,53 +1,76 @@
 function entrar() {
-    aguardar();
+    // aguardar();
 
-    var formulario = new URLSearchParams(new FormData(document.getElementById("form_login")));
+    var emailVar = email_input.value;
+    var senhaVar = senha_input.value;
 
-    console.log("FORM LOGIN: ", formulario.get("login"));
-    console.log("FORM SENHA: ", formulario.get("senha"));
+    // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+    if (emailVar == "" || senhaVar == "") {
+        window.alert("Preencha todos os campos para prosseguir!");
+        // finalizarAguardar();
+        return false;
+    }
+
+    if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
+        window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
+        // finalizarAguardar();
+    }
 
     fetch("/usuarios/autenticar", {
         method: "POST",
-        body: formulario
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            email: emailVar,
+            senha: senhaVar,
+        })
     }).then(function (resposta) {
         console.log("ESTOU NO THEN DO entrar()!")
-
+        
         if (resposta.ok) {
             console.log(resposta);
-
+            alert("conta encontrada")
+            
+          
+           
             resposta.json().then(json => {
                 console.log(json);
                 console.log(JSON.stringify(json));
 
-                sessionStorage.LOGIN_USUARIO = json.login;
+                sessionStorage.EMAIL_USUARIO = json.email;
                 sessionStorage.NOME_USUARIO = json.nome;
                 sessionStorage.ID_USUARIO = json.id;
 
+
+
                 setTimeout(function () {
-                    window.location = "/index.html";
-                }, 1000);
+                    window.location = "./index.html";
+                }, 1000); // apenas para exibir o loading
+
             });
 
         } else {
-
-            console.log("Erro de login!");
+            alert("Usuario ou senha invalido, tente novamente")
+            console.log("Houve um erro ao tentar realizar o login!");
 
             resposta.text().then(texto => {
                 console.error(texto);
-                // limparFormulario();
-                finalizarAguardar(texto);
+               //finalizarAguardar(texto);
             });
         }
 
     }).catch(function (erro) {
         console.log(erro);
+        
     })
 
     return false;
 }
 
+
 function validarSessao() {
-    aguardar();
+    // aguardar();
 
     var login = sessionStorage.LOGIN_USUARIO;
     var nome = sessionStorage.NOME_USUARIO;
@@ -58,15 +81,15 @@ function validarSessao() {
         // window.alert(`Seja bem-vindo, ${nome}!`);
         h1Titulo.innerHTML = `${login}`;
 
-        finalizarAguardar();
+        // finalizarAguardar();
     } else {
         window.location = "login.html";
     }
 }
 
 function sair() {
-    aguardar();
+    // aguardar();
     sessionStorage.clear();
-    finalizarAguardar();
+    // finalizarAguardar();
     window.location = "login.html";
 }

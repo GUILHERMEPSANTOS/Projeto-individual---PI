@@ -30,6 +30,8 @@
         </div>
         <div class="class_menu">
           <ul class="menu">
+
+            
             <li><a href="index.html">Home</a></li>
             <!-- <li><a href="#id_charity_area">Charity Area</a></li> -->
             <!-- <li><a href="#">Sobre</a></li> -->
@@ -157,10 +159,11 @@
     })
       .then(function (resposta) {
         console.log("resposta: ", resposta);
-        alert("entrei 2")
+        alert(resposta)
         if (resposta.ok) {
           window.alert("Cadastro realizado com sucesso!");
           window.location = "login.html";
+          
         //   finalizarAguardar();
         } else {
           throw "Houve um erro ao tentar realizar o cadastro!";

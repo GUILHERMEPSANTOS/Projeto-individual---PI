@@ -1,5 +1,22 @@
+// function validar_login(){
+//     var email = sessionStorage.EMAIL_USUARIO;
+//     var nome = sessionStorage.NOME_USUARIO;
+//     var comentario_habilitacao = document.querySelector("#textarea_descricao");
+//     var btn_habilitacao = document.querySelector("#btn_publicar");
+//     if (email != undefined && nome != undefined){
 
- const img = document.querySelectorAll("#id_img img");
+//     comentario_habilitacao.removeAttribute("disabled");
+//     btn_habilitacao.removeAttribute("disabled");
+//     }
+//     else{
+//         console.log("Faça login para poder comentar")  
+//         comentario_habilitacao.setAttribute("disabled", "disabled");
+//         btn_habilitacao.setAttribute("disabled", "disabled");
+//     }
+//  }
+
+
+const img = document.querySelectorAll("#id_img img");
 const imgs = document.getElementById("id_img");
 
 const selector = document.querySelector("#id_selector1");

@@ -63,6 +63,8 @@ ul li a {
   text-decoration: none;
   color: white;
   transition: all 0.5s ease;
+  position: relative;
+  left: 500%;
 }
 ul li a:hover {
   color: #3778e7;
@@ -212,6 +214,14 @@ ul li #id_btn:hover {
   background-color: #004add;
   color: white;
 }
+.div_form button:hover {
+  padding: 5px 10px;
+  width: 43%;
+  border-radius: 20px;
+  border: 1px solid black;
+  background-color: #0074ff;
+  color: white;
+}
 .div_form button span {
   font-weight: bold;
 }
@@ -223,6 +233,13 @@ input {
   height: 10%;
   border-radius: 15px;
   border: 1px solid black;
+}
+input:focus{
+  width: 70%;
+  height: 10%;
+  border-radius: 15px;
+  border: 2px solid #0074ff;
+  outline:none;
 }
 
 /* FOOTER */
@@ -328,6 +345,16 @@ a {
   box-sizing: border-box;
   border-radius: 29px;
 }
+.cadastro .container .right_side_c .div_form_c input:focus{
+  border-radius: 29px;
+  width: 80%;
+  height: 8%;
+  background: #ECF0F1;
+  border: 1px solid #0074ff;
+  box-sizing: border-box;
+  border-radius: 29px;
+  outline:none;
+}
 .cadastro .container .right_side_c .div_form_c label{
   display: block;
   position: relative;
@@ -341,6 +368,15 @@ a {
   border-radius: 20px;
   border: 1px solid black;
   background-color: #004add;
+  color: white;
+}
+.cadastro .container .right_side_c .div_form_c .btn:hover{
+  margin-top: 10%;
+  padding: 5px 10px;
+  width: 43%;
+  border-radius: 20px;
+  border: 1px solid black;
+  background-color: #0074ff;
   color: white;
 }
 #label_conf{

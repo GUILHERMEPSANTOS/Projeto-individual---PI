@@ -30,7 +30,7 @@ body {
   display: flex;
 }
 .container .logo {
-  width: 31%;
+  width: 14%;
   height: 100%;
 }
 .container .logo img {
@@ -40,12 +40,22 @@ body {
 }
 .header .class_menu {
   height: 100%;
-  width: 79%;
+  width: 80%;
   display: flex;
   align-items: center;
-  /* justify-content: flex-end; */
+  position: relative;
+  left: 222px;
 }
 
+#b_usuario a{
+  text-decoration: none;
+  color: white;
+  transition: all 0.6s ease;
+}
+#b_usuario a:hover{
+  text-decoration: none;
+  color: #3778e7;
+}
 .header .class_menu .menu {
   display: flex;
   justify-content: space-between;
@@ -57,6 +67,16 @@ body {
 }
 .header .class_menu .menu span {
   color: white;
+}
+
+.header .container .usuario{
+  position: relative;
+  color: white;
+  /* top: 28px; */
+  left: -35px;
+  width: 40%;
+  display: flex;
+  align-items: center;
 }
 
 ul li a {
@@ -78,6 +98,33 @@ ul li a:hover {
   background-color: none;
   border: 2px solid #3778e7;
   transition: all 0.6s ease;
+}
+#id_btn2 {
+  position: relative;
+  left: 17px;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  color: #fff;
+  margin: 10px 0;
+  /* background-image: linear-gradient(90deg,#0162c8,#55e7fc)   ; */
+  background-color: none;
+  border: 2px solid #3778e7;
+  transition: all 0.6s ease;
+}
+#id_btn2:hover {
+  padding: 10px 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  color: #fff;
+  margin: 10px 0;
+  /* background-image: linear-gradient(90deg,#0162c8,#55e7fc)   ; */
+  background-color: none;
+  border: 2px solid #3778e7;
+  transition: all 0.6s ease;
+  background-color: #3778e7;
 }
 ul li #id_btn {
   padding: 12px 36px;
@@ -388,7 +435,141 @@ color:#fff;
  
 }
 
+.feed-container{
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.comentario {
+  height: 110vh;
+  width: 100vw;
+  background-color: #f7f7ff;
+  display: flex;
+  justify-content: space-evenly;
+  font-family: Arial, Helvetica, sans-serif;
+  
+  
 
+}
+#desc {
+  position: relative;
+  left: -26%;
+}
+.comentario .container{
+  height: 100%;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  
+  
+  
+}
+
+.comentario .container .avisos{
+   
+ height: 90%;
+ width: 100%;
+ margin-top: 3%;
+ 
+}
+.comentario .container .avisos .titulo{
+   width: 100%;
+   height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.comentario .container .avisos form{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  color:#0092ff;
+  align-items: center;
+}
+.comentario .container .avisos form button{
+  padding: 12px 36px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  color: #fff;
+  margin: 10px 0;
+  /* background-image: linear-gradient(90deg,#0162c8,#55e7fc)   ; */
+  background-color: #3778e7;
+  border: 2px solid #3778e7;
+  width: 20%;
+  transition: all 0.6s ease;
+
+}
+.comentario .container .avisos form button:hover{
+  padding: 12px 36px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  color: #fff;
+  margin: 10px 0;
+  /* background-image: linear-gradient(90deg,#0162c8,#55e7fc)   ; */
+  background-color: #3778e7;
+  border: 2px solid #3778e7;
+  width: 20%;
+  background-color: blue;
+
+}
+.span_nome {
+  font-size: 12px;
+  border: 2px solid #0092ff;
+  border-radius: 20px;
+  color: #0092ff;
+  padding: 10px 10px;
+}
+.publicacao {
+  position: relative;
+  left: 9%;
+  top: 25px;
+  margin-bottom: 10px;
+}
+.Mural .titulo {
+  width: 100%;
+}
+.Mural .titulo  h1{
+ position: relative;
+ left: -36%;
+}
+
+/* .comentario .container .avisos h1{
+  font-family: Arial;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 14px;
+  letter-spacing: 0.13em;
+  text-align: left;
+  color: #0092ff;
+  margin-top: 7%;
+}
+.comentario .container .avisos {
+  font-family: Arial;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: 14px;
+  letter-spacing: 0.13em;
+  text-align: left;
+  color: #000;
+  margin-top: 0%;
+}
+.comentario .container .avisos button{
+  padding: 12px 36px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border-radius: 40px;
+  color: #3778e7;
+  margin: 10px 0;
+ 
+  background-color: none;
+  border: 2px solid #3778e7;
+  transition: all 0.6s ease;
+} */
 .sobre {
   width: 100vw;
   height: 100vh;

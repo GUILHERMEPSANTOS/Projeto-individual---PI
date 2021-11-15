@@ -29,12 +29,7 @@
              <div class="class_menu">
                     <ul class="menu">
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#id_charity_area">Charity Area</a></li>
-                    <li><a href="#">Sobre</a></li>
                     
-                    <span>|</span>
-                    <li><a  href="./login.html">Login</a></li>
-                     <li><a id="id_btn" href="./cadastro.html">Cadastrar-se</a></li>  
                    
                     
                   </ul> 
@@ -146,16 +141,16 @@
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
 
-        // TODO: VERIFICAR AS VALIDAÇÕES QUE ELES ESTÃO APRENDENDO EM ALGORITMOS 
+       
         if (emailVar == "" || senhaVar == "") {
             window.alert("Preencha todos os campos para prosseguir!");
-            // finalizarAguardar();
+           
             return false;
         }
 
         if (emailVar.indexOf("@") == -1 || emailVar.indexOf(".com") == -1) {
             window.alert("Ops, e-mail inválido! Verifique e tente novamente.");
-            // finalizarAguardar();
+            
         }
 
         fetch("/usuarios/autenticar", {
@@ -174,6 +169,8 @@
                 console.log(resposta);
                 alert("conta encontrada")
                 
+               
+
                 resposta.json().then(json => {
                     console.log(json);
                     console.log(JSON.stringify(json));
@@ -182,9 +179,11 @@
                     sessionStorage.NOME_USUARIO = json.nome;
                     sessionStorage.ID_USUARIO = json.id;
 
+
+
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
-                    }, 1000); // apenas para exibir o loading
+                        window.location = "./index.html";
+                    }, 1000); 
 
                 });
 
@@ -194,7 +193,7 @@
 
                 resposta.text().then(texto => {
                     console.error(texto);
-                   //finalizarAguardar(texto);
+                  
                 });
             }
 

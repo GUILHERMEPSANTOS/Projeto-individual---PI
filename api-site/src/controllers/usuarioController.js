@@ -79,7 +79,9 @@ function cadastrar(req, res) {
         usuarioModel.cadastrar(nome, email, senha, preferencia)
             .then(
                 function (resultado) {
+
                     res.json(resultado);
+
                 }
             ).catch(
                 function (erro) {

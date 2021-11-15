@@ -8,7 +8,7 @@ router.get("/", function (req, res) {
 });
 
 router.get("/listar", function (req, res) {
-    usuarioController.listar(req, res);
+    usuarioController.listar(req, res); 
 });
 //router é o nome do arquivo
 router.post("/cadastrar", function (req, res) {

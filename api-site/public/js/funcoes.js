@@ -12,12 +12,15 @@ function validarSessao() {
         if (h1LoginUsuario != undefined) {
             h1LoginUsuario.innerHTML = email;
         }
+        b_usuario.innerHTML = '';
         b_usuario.innerHTML = nome;
 
         // finalizarAguardar();
     } else {
-        window.location = "../login.html";
-    }
+        setTimeout(function(){
+            window.location.href = "./index.html";},2000000000)
+   }
+       
 }
 
 function limparSessao() {
