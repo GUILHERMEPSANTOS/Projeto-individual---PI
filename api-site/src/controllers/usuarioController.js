@@ -1,5 +1,5 @@
 var usuarioModel = require("../models/usuarioModel");
-
+const nodemailer = require("nodemailer");
 var sessoes = [];
 
 function testar(req, res) {
@@ -38,6 +38,9 @@ function entrar(req, res) {
                 function (resultado) {
                     console.log(`\nResultados encontrados: ${resultado.length}`);
                     console.log(`Resultados: ${JSON.stringify(resultado)}`); // transforma JSON em String
+
+
+
 
                     if (resultado.length == 1) {
                         console.log(resultado);
@@ -81,6 +84,30 @@ function cadastrar(req, res) {
                 function (resultado) {
 
                     res.json(resultado);
+                    
+                    let tranporter = nodemailer.createTransport({
+                        host: "smtp.gmail.com", 
+                        port: 587,
+                        secure: false,
+                        auth:{
+                            user: "tesemail113@gmail.com",
+                            pass: "Teste_123"
+                        }
+                    })
+                    
+                     tranporter.sendMail ({
+                         from: "Guilherme <tesemail113@gmail.com>",
+                         to: `${email}`,
+                         subject:"Parabéns",
+                         text:"Muito obrigado por contribuir com nosso analytics",
+                         html: "Parabéns você realizou seu Cadastro com sucesso"
+                    
+                     }).then(message => {
+                         console.log(message);
+                     }).catch(err => {
+                         console.log(err);
+                     })
+
 
                 }
             ).catch(
