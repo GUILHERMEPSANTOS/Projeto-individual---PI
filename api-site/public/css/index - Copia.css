@@ -438,6 +438,7 @@ color:#fff;
 .feed-container{
   overflow: hidden;
   overflow-y: scroll;
+  height: 250px;
 }
 .comentario {
   height: 110vh;
