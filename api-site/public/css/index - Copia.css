@@ -455,6 +455,22 @@ color:#fff;
   position: relative;
   left: -26%;
 }
+
+.grafico{
+  height: 100vh;
+  width: 100vw;
+  background-color: #3778e7;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+
+}
+.grafico .container{
+  height: 80%;
+  width: 70%;
+  background-color: #f7f7ff;
+}
+
 .comentario .container{
   height: 100%;
   width: 80%;

@@ -137,7 +137,7 @@
 <script>
   function cadastrar() {
     // aguardar();
-    alert("entrei")
+    
     var nomeVar = nome_input.value;
     var emailVar = email_input.value;
     var senhaVar = senha_input.value;
@@ -158,19 +158,30 @@
       }),
     })
       .then(function (resposta) {
-        console.log("resposta: ", resposta);
-        console.log(resposta)
-        if (resposta.ok) {
-          window.alert("Cadastro realizado com sucesso!");
-          window.location = "login.html";
-          
-        //   finalizarAguardar();
-        } else {
-          throw "Houve um erro ao tentar realizar o cadastro!";
-        }
+       /*  console.log("resposta: ", resposta);
+        console.log(resposta) */
+        resposta.json().then(function(json) {
+          console.log(json)
+          if (json != emailVar) {
+
+            window.alert("Cadastro realizado com sucesso!");
+            window.location = "login.html";
+            
+          //   finalizarAguardar();
+          } else {
+            window.alert("Email já Cadastrado")
+            
+            throw "Houve um erro ao tentar realizar o cadastro!";
+          }
+        }).catch((erro)=>{
+          console.log(erro)
+        })
+        
       })
       .catch(function (resposta) {
         console.log(`#ERRO: ${resposta}`);
+       
+
         // finalizarAguardar();
       });
   }

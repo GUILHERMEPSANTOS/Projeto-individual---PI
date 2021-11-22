@@ -18,8 +18,10 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Hind:wght@300;700&family=Poppins:wght@500;600&display=swap" rel="stylesheet">
     <script src="./js/funcoes.js"></script>
-    
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        
         function validar_login(){
         var email = sessionStorage.EMAIL_USUARIO;
         var nome = sessionStorage.NOME_USUARIO;
@@ -30,7 +32,7 @@
         comentario_habilitacao.removeAttribute("disabled");
         btn_habilitacao.removeAttribute("disabled");
         
-        id_btn2.style.display = 'block';
+        id_btn2.style.visibility = 'visible';
         id_btn1.style.visibility="hidden"
             }
         else{
@@ -38,14 +40,16 @@
             comentario_habilitacao.setAttribute("disabled", "disabled");
             btn_habilitacao.setAttribute("disabled", "disabled");
             
-            id_btn2.style.display = 'none';
+            id_btn2.style.visibility = 'hidden';
             id_btn1.style.visibility="visible"
         }
      }
     
     </script>
+
+
 </head>
-<body onload="validar_login(), atualizarFeed(), validarSessao()   " > <!-- validarSessao() -->
+<body onload="validar_login(), validarSessao() ,atualizarFeed()" > <!-- validarSessao() -->
 <div class="header">
         <div class="container">
              <div class="logo">
@@ -69,7 +73,7 @@
 
              <div class="usuario">
                 <span id="b_usuario"><a href="./login.html">Login</a></span>
-                <span id="id_btn2" onclick="limparSessao()">Sair</span>
+                <span id="id_btn2" style="visibility:hidden" onclick="limparSessao()">Sair</span>
              </div>
 
         </div>
@@ -235,6 +239,12 @@
         </div>
     </div>
 
+    <div class="grafico">
+        <div class="container">
+            <canvas id="myChart" ></canvas>
+        </div>
+
+    </div>
     <div id="comentario" class="comentario">
         <div class="container">
             
@@ -319,17 +329,109 @@
         </div>
     </div>
     
-    
 </body>
 </html>
+
+
+
+<script>
+    
+
+
+</script>
 
 
 
 <script src="./js/index.js"></script>
 
 <script>
+    // Any of the following formats may be used
+    var dadochart = [];
+    var dadolabel = [];
+    
+    fetch("/grafico", {
+        method: "GET",
+        
+    }).then(function(resposta){
+        resposta.json().then(function(json){
+            console.log(json)
+            var obj = (json)
+            for(var i = 0; i < obj.length ; i++){
+                // dadolabel.push(obj[i])
+                // dadochart.push(obj[i].Preferencia);
+               
+              
+                dadolabel.push(obj[i].Preferencia)
+                dadochart.push(obj[i].Qtd);
 
- 
+            
+
+                
+                
+            }
+            Meu_dados_chart(dadolabel,dadochart);
+
+        })
+        .catch(function(erro){
+            console.log(erro)
+        });
+
+    }).catch(function(err){
+        console.log(err)
+    })
+    
+    function Meu_dados_chart(A,B){
+        console.log("A:")
+        console.log(A)
+        console.log("B:")
+        console.log(B)
+
+const ctx = document.getElementById('myChart');
+
+const myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: A,
+        datasets: [{
+            label: '# of Votes',
+            data: B,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Ranking do interesse dos usuarios'
+            }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});
+}
+</script>
+<script>
+
 
      function limparFormulario() {
         document.getElementById("form_postagem").reset();
@@ -459,7 +561,7 @@
                 throw ('Houve um erro na API!');
             }
         }).catch(function (resposta) {
-            console.error(resposta);
+            console.log(resposta);
             // finalizarAguardar();
         });
     }

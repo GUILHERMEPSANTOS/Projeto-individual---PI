@@ -10,7 +10,9 @@ function testar(req, res) {
 function listar(req, res) {
     usuarioModel.listar()
         .then(function (resultado) {
+            
             if (resultado.length > 0) {
+                
                 res.status(200).json(resultado);
             } else {
                 res.status(204).send("Nenhum resultado encontrado!")
@@ -45,6 +47,7 @@ function entrar(req, res) {
                     if (resultado.length == 1) {
                         console.log(resultado);
                         res.json(resultado[0]);
+
                     } else if (resultado.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {
@@ -79,47 +82,70 @@ function cadastrar(req, res) {
     } else if (preferencia == undefined || preferencia == "-" ) {
         res.status(400).send("Sua preferencia está undefined!");
     }else {
-        usuarioModel.cadastrar(nome, email, senha, preferencia)
-            .then(
-                function (resultado) {
+        
+        usuarioModel.listar(email)
+        .then(function(resposta){
 
-                    res.json(resultado);
-                    
-                    let tranporter = nodemailer.createTransport({
-                        host: "smtp.gmail.com", 
-                        port: 587,
-                        secure: false,
-                        auth:{
-                            user: "tesemail113@gmail.com",
-                            pass: "Teste_123"
+
+            if(resposta[0]== undefined){
+                
+                usuarioModel.cadastrar(nome, email, senha, preferencia)
+                    .then(
+    
+                        function (resultado) {
+                                
+                        
+                            res.json(resultado);
+                            
+                            let tranporter = nodemailer.createTransport({
+                                host: "smtp.gmail.com", 
+                                port: 587,
+                                secure: false,
+                                auth:{
+                                    user: "tesemail113@gmail.com",
+                                    pass: "Teste_123"
+                                }
+                            })
+                            
+                             tranporter.sendMail ({
+                                 from: "Guilherme <tesemail113@gmail.com>",
+                                 to: `${email}`,
+                                 subject:"Parabéns",
+                                 text:"Muito obrigado por contribuir com nosso analytics",
+                                 html: "Parabéns você realizou seu Cadastro com sucesso"
+                            
+                             }).then(message => {
+                                 console.log(message);
+                             }).catch(err => {
+                                 console.log(err);
+                             })
+        
+        
                         }
-                    })
-                    
-                     tranporter.sendMail ({
-                         from: "Guilherme <tesemail113@gmail.com>",
-                         to: `${email}`,
-                         subject:"Parabéns",
-                         text:"Muito obrigado por contribuir com nosso analytics",
-                         html: "Parabéns você realizou seu Cadastro com sucesso"
-                    
-                     }).then(message => {
-                         console.log(message);
-                     }).catch(err => {
-                         console.log(err);
-                     })
+                    ).catch(
+                        function (erro) {
+                            console.log(erro);
+                            console.log(
+                                "\nHouve um erro ao realizar o cadastro! Erro: ",
+                                erro.sqlMessage
+                            );
+                            res.status(500).json(erro.sqlMessage);
+                        }
+                    )
+
+            }else{
+                res.json(resposta[0].email)
+             }
+        
+
+                
+        // aqui
 
 
-                }
-            ).catch(
-                function (erro) {
-                    console.log(erro);
-                    console.log(
-                        "\nHouve um erro ao realizar o cadastro! Erro: ",
-                        erro.sqlMessage
-                    );
-                    res.status(500).json(erro.sqlMessage);
-                }
-            );
+        }).catch((erro)=>{
+            console.log(erro);
+        }  
+            )
     }
 }
 
