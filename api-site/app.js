@@ -25,6 +25,7 @@ app.use("/", indexRouter);
 app.use("/usuarios", usuarioRouter);
 app.use("/avisos", avisosRouter);
 app.use("/medidas", medidasRouter)
+/* app.use("/medidas", medidasRouter) */
 app.use("/grafico", graficoRouter)
 
 app.listen(PORTA, function () {
